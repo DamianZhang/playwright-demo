@@ -10,27 +10,26 @@ jobs:
         run: |
           git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
         working-directory: zed-product-test
-      # - name: Access cloned repository content
-      #   run: |
-      #     cd zed-product-test
-      #     ls -la
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - name: Install dependencies
         run: |
+          cd zed-product-test
           ls -la
           npm ci
       - name: Install browsers
         run: |
+          cd zed-product-test
           npx playwright install --with-deps
       - name: Run e2e test
         run: |
+          cd zed-product-test
           make e2e-test
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: e2e-test-report
-          path: playwright-report
+          path: zed-product-test/playwright-report
