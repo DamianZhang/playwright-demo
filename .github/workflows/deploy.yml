@@ -16,12 +16,11 @@ jobs:
       - name: Install dependencies
         run: |
           cd zed-product-test
-          ls -la
           npm ci
       - name: Install browsers
         run: |
           cd zed-product-test
-          npx playwright install
+          npx playwright install-deps chromium
       - name: Run e2e test
         run: |
           cd zed-product-test
