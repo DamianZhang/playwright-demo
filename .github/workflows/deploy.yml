@@ -13,6 +13,8 @@ jobs:
         run: |
           cd zed-product-test
           ls -la
+      - name: Set working directory
+        working-directory: zed-product-test
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:
