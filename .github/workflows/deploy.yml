@@ -5,16 +5,18 @@ on: [push, pull_request]
 jobs:
   e2e-test:
     runs-on: ubuntu-latest
-    steps:
-      - name: Clone e2e test source code
-        run: |
-          git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
-      - name: Access cloned repository content
-        run: |
-          cd zed-product-test
-          ls -la
-      - name: Set working directory
+    defaults:
+      run:
+        shell: git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
         working-directory: zed-product-test
+    steps:
+      # - name: Clone e2e test source code
+      #   run: |
+      #     git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
+      # - name: Access cloned repository content
+      #   run: |
+      #     cd zed-product-test
+      #     ls -la
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:
