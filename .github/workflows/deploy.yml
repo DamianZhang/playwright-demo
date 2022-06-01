@@ -21,7 +21,7 @@ jobs:
       - name: Install browsers
         run: |
           cd zed-product-test
-          npx playwright install --with-deps
+          npx playwright install
       - name: Run e2e test
         run: |
           cd zed-product-test
