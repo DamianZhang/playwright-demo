@@ -9,7 +9,6 @@ jobs:
       - name: Clone e2e test source code
         run: |
           git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
-        working-directory: zed-product-test
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:
