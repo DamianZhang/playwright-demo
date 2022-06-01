@@ -13,10 +13,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install dependencies
+      - name: Install Playwright
         run: |
           cd zed-product-test
-          npm ci
+          npm i -D @playwright/test
       - name: Install browsers
         run: |
           cd zed-product-test
