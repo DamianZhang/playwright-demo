@@ -5,14 +5,11 @@ on: [push, pull_request]
 jobs:
   e2e-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
-        working-directory: zed-product-test
     steps:
-      # - name: Clone e2e test source code
-      #   run: |
-      #     git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
+      - name: Clone e2e test source code
+        run: |
+          git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
+        working-directory: zed-product-test
       # - name: Access cloned repository content
       #   run: |
       #     cd zed-product-test
