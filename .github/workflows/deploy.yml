@@ -19,6 +19,7 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: |
+          ls -la
           npm ci
       - name: Install browsers
         run: |
