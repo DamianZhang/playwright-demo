@@ -22,10 +22,6 @@ trading-test:
 
 .PHONY: build-trading-test-image
 build-trading-test-image:
-	@docker build -t zed-trading-test -f Dockerfile-trading-test .
-
-.PHONY: build-trading-test-image
-build-trading-test-image:
 	@docker build -t zed-trading-test-image \
 	-f Dockerfile-trading-test .
 
