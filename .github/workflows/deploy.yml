@@ -8,26 +8,26 @@ jobs:
     steps:
       - name: Clone e2e test source code
         run: |
-          git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-product-test.git
+          git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-e2e-test.git
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - name: Install Playwright
         run: |
-          cd zed-product-test
+          cd zed-e2e-test
           npm i -D @playwright/test
       - name: Install browsers
         run: |
-          cd zed-product-test
+          cd zed-e2e-test
           npx playwright install
       - name: Run e2e test
         run: |
-          cd zed-product-test
-          make e2e-test
+          cd zed-e2e-test
+          make product-e2e-test
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: e2e-test-report
-          path: zed-product-test/playwright-report
+          path: zed-e2e-test/playwright-report
