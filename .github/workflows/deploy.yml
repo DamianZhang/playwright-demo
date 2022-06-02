@@ -6,28 +6,27 @@ jobs:
   e2e-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone e2e test source code
-        run: |
-          git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-e2e-test.git
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      # - name: Clone e2e test source code
+      #   run: |
+      #     git clone https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/hashgreen/zed-e2e-test.git
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - name: Install dependencies
         run: |
-          cd zed-e2e-test
           npm ci
       - name: Install browsers
         run: |
-          cd zed-e2e-test
           npx playwright install
       - name: Run e2e test
         run: |
-          cd zed-e2e-test
           make product-e2e-test
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: e2e-test-report
-          path: zed-e2e-test/playwright-report
+          path: playwright-report
