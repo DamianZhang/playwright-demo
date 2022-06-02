@@ -24,15 +24,22 @@ jobs:
       # - name: Run e2e test
       #   run: |
       #     make product-e2e-test
-      - name: Build product test image
-        run: |
-          make build-product-test-image
-      - name: Run product test image
-        run: |
-          make run-product-test-image
-      - name: Get product test results
-        run: |
-          make get-product-test-results
+      # 
+      # - name: Build product test image
+      #   run: |
+      #     make build-product-test-image
+      # - name: Run product test image
+      #   run: |
+      #     make run-product-test-image
+      # - name: Get product test results
+      #   run: |
+      #     make get-product-test-results
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+      - name: Set up Playwright
+        uses: microsoft/playwright-github-action@v1
+      - name: Install dependencies and run tests
+        run: npm install && npx playwright test src/product-test --config=src/product-test/product-test.config.js
       - name: Upload product test results
         if: always()
         uses: actions/upload-artifact@v3
