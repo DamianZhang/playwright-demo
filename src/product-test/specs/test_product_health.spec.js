@@ -4,7 +4,7 @@ test.describe('Product Health:', () => {
   test('Liveness Should Be OK', async ({ request }) => {
     const _response = await request.get('/api/product/liveness');
     console.log("------------------------------");
-    console.log(await response.text());
+    console.log(await _response.text());
     console.log("------------------------------");
     expect(_response.status()).toBe(200);
     expect(_response.ok()).toBeTruthy();
