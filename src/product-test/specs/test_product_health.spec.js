@@ -6,7 +6,8 @@ test.describe('Product Health:', () => {
       page.waitForResponse('/api/product/liveness'),
       page.goto('/api/product/liveness'),
     ]);
-    console.log(await response.json());
+    console.log("------------------------------");
+    console.log(await response.text());
     console.log("------------------------------");
     expect(response.status()).toBe(200);
     expect(response.ok()).toBeTruthy();
