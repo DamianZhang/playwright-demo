@@ -5,6 +5,7 @@ test.describe('Product Health:', () => {
     const _response = await request.get('/api/product/liveness');
     console.log("------------------------------");
     console.log(await _response.text());
+    await new Promise(r => setTimeout(r, 3000));
     console.log("------------------------------");
     expect(_response.status()).toBe(200);
     expect(_response.ok()).toBeTruthy();
