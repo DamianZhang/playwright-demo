@@ -34,8 +34,10 @@ jobs:
       # - name: Get product test results
       #   run: |
       #     make get-product-test-results
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
+      - name: Set up Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Set up Playwright
         uses: microsoft/playwright-github-action@v1
       - name: Install dependencies and run tests
